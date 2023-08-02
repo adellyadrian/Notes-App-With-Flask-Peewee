@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} - FlaskApp {% endblock %}</title>
+    <style>
+        .post {
+            padding: 10px;
+            margin: 5px;
+            width: 60%;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            font-weight: 800;
+            color: black;
+            background: white;
+            box-shadow: 0px 10px 40px -5px purple;
+        }
+
+        nav a {
+            color: white;
+            font-size: 3em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+
+.alert {
+    padding: 20px;
+    margin: 5px;
+    color: #970020;
+    background-color: #ffd5de;
+    margin-top: 325px;
+}
+
+        body {
+            background-color: black;
+        }
+
+        .logo{
+        width: 5%;
+        position: relative;
+        }
+
+        .title{
+
+            margin-left: 2px;
+            padding: 10px;
+            height: 65px;
+        }
+
+        .head{
+            position: absolute;
+            top: 30px;
+            left: 70px;
+        }
+
+        .sp{
+            position: absolute;
+            top: 30px;
+            right: 330px;
+            width: 300px;
+            height: 40px;
+            box-shadow: 0px 10px 40px -5px purple;
+            font-size: 15px;
+        }
+        .sph {
+            position: absolute;
+            top: 38px;
+            right: 290px;
+            width: 30px;
+            height: 30px;
+            box-shadow: 0px 10px 40px -5px purple;
+            font-size: 15px;
+        }
+        .un {
+            color: white;
+            position: absolute;
+            top: 45px;
+            left: 250px;
+            font-size: 28px;
+            font-family: "Times New Roman", Times, serif;
+            opacity: 0.5;
+            text-shadow: 2px 2px 4px purple;
+        }
+        .un:hover {
+            color: purple;
+        }
+        .purple-button {
+            position: absolute;
+            display: inline-block;
+            padding: 10px 30px;
+            background-color: purple;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+            top: 33px;
+            right: 70px;
+
+        }
+
+      .purple-button:hover {
+          background-color: #800080;
+          cursor: pointer;
+      }
+
+      .cr {
+        display: inline-block;
+        padding: 10px 30px;
+        background-color: purple;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+      }
+
+      .pt {
+        width: 550px;
+        height: 30px;
+        top: 170px;
+        position: absolute;
+      }
+
+      .pc{
+        width: 550px;
+        height: 200px;
+        top: 210px;
+        position: absolute;
+        font-size: 20px;
+      }
+
+      .pb{
+            position: absolute;
+            display: inline-block;
+            padding: 10px 30px;
+            background-color: purple;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+            top: 420px;
+            left: 440px;
+      }
+
+      .sub{
+         width: 80px;
+         height: 36px;
+         top: 35px;
+         right: 195px;
+         position: absolute;
+         font-size: 20px;
+         background-color: black;
+         color: purple;
+      }
+      .hp{
+            position: absolute;
+            width: 55px;
+            height: 45px;
+            top: 30px;
+            right: 5px;
+      }
+      .anp{
+        color: white;
+      }
+      }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="title">
+            <img src="https://i.pinimg.com/564x/e4/d5/d4/e4d5d49be5cd194816ba3f3397dbd0cb.jpg" class="logo" alt="logo">
+            <a class="head">Notes </a>
+            {% if username %}
+                <span class="un">@{{ username }}</span>
+            {% endif %}
+                <form action="{{ url_for('search_posts') }}" method="POST">
+                <input type="text" id="post_name" name="post_name" placeholder="Search post" class="sp" required>
+                <img src="https://icones.pro/wp-content/uploads/2021/02/loupe-et-icone-de-recherche-de-couleur-rose.png" class="sph">
+                <input type="submit" class="sub" value="Search">
+                    <a href="{{ url_for('main_page') }}">
+                        <img src="https://static.vecteezy.com/system/resources/previews/002/158/567/original/glowing-neon-laptop-and-smart-home-icon-isolated-on-brick-wall-background-remote-control-illustration-work-from-home-vector.jpg" class="hp">
+                    </a>
+                </form>
+            {% if username %}
+                <a href="{{ url_for('logout') }}" class="purple-button">Logout</a>
+            {% endif %}
+        </div>
+    </nav>
+    <hr>
+    <div class="content">
+        <a href="{{ url_for('create') }}" class="cr">Create</a>
+        {% for message in get_flashed_messages() %}
+            <div class="alert">{{ message }}</div>
+        {% endfor %}
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>

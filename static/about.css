@@ -1,0 +1,70 @@
+
+.hire{
+  font-size: 18px;
+  background: purple;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  padding: 8px 25px;
+  border-radius: 6px;
+  transition: 0.5s;
+}
+.hire:hover{
+  background: #000;
+  border: 1px solid #4070f4;
+}
+
+body {
+    background-color: black;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    display: block:
+}
+
+
+.side {
+    position: relative;
+}
+
+.data{
+  position: absolute;
+  bottom: -200px;
+  right: 50px;
+
+}
+
+.im-container {
+  position: relative;
+
+}
+
+.im-container p {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  font-size: 35px;
+}
+
+.img2 {
+    position: absolute;
+
+    top: 50px;
+    opacity: 0.3;
+    width: 50%;
+    height: 800px;
+}
+
+.img3 {
+    position: absolute;
+    right: 1px;
+    top: 50px;
+    width: 50%;
+    height: 800px;
+    opacity: 0.3;
+}

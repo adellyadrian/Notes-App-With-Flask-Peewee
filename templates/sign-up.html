@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup page</title>
+    <link rel="stylesheet" href="static/sign.css">
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('signup') }}">
+        <div class="main">
+
+        <div class="right">
+          <div class="card">
+            <h1>SIGNUP</h1>
+        <div class="textfield">
+        <label for="first_name">First_Name:</label>
+        <input type="text" name="first_name" required>
+        </div>
+        <br>
+              <div class="textfield">
+        <label for="second_name">Second_Name:</label>
+        <input type="text" name="second_name" required>
+              </div>
+        <br>
+              <div class="textfield">
+        <label for="email">Email:</label>
+        <input type="text" name="email" required>
+              </div>
+        <br>
+              <div class="textfield">
+        <label for="username">Username:</label>
+        <input type="text" name="username" required>
+                  <div>
+        <br>
+                      <div class="textfield">
+        <label for="password">Password:</label>
+        <input type="password" name="password" required>
+                      </div>
+        <br>
+        <input type="submit" value="Signup">
+                      </div>
+    </div>
+    <p>Already have an account? <a href="{{ url_for('login_page') }}">Login</a></p>
+    </form>
+</body>
+</html>
